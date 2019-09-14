@@ -10,9 +10,9 @@ impl VIC {
         }
     }
     
-    pub fn get_screen_mem() -> &'static [char] {
+    pub fn get_screen_mem() -> &'static [u8] {
         unsafe {
-            let screen_mem = 0x400 as *mut char;
+            let screen_mem = 0x400 as *mut u8;
             core::slice::from_raw_parts(screen_mem, 2048)
         }
     }
@@ -21,5 +21,5 @@ impl VIC {
 pub fn main() {
     VIC::set_border_color(1);
     let mem = VIC::get_screen_mem();
-    mem[0] = 'A';
+    mem[0] = 'A' as u8;
 }
