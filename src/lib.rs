@@ -10,10 +10,10 @@ impl VIC {
         }
     }
     
-    pub fn get_screen_mem() -> &'static [u8] {
+    pub fn get_screen_mem() -> &'static mut [u8] {
         unsafe {
             let screen_mem = 0x400 as *mut u8;
-            core::slice::from_raw_parts(screen_mem, 2048)
+            core::slice::from_raw_parts_mut(screen_mem, 2048)
         }
     }
 }
